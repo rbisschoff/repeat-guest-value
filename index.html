@@ -283,6 +283,8 @@ header {
 
 .authority-band { display:none; background:var(--card); border-radius:var(--r12); padding:14px 16px; margin:20px 0; border:0.5px solid var(--border); }
 .authority-band.visible { display:block; }
+.contact-route { display:none; margin:20px 0 0; font-size:14px; color:var(--ink2); line-height:1.55; }
+.contact-route a { color:var(--accent); font-weight:500; }
 .authority-note { font-size:12px; color:var(--muted); line-height:1.6; font-style:italic; }
 .authority-series { font-size:11px; margin-top:10px; color:var(--muted); }
 .authority-series strong { color:var(--alert); font-style:italic; font-weight:700; }
@@ -556,6 +558,8 @@ footer a { color:var(--alert); text-decoration:none; font-weight:500; }
     </div>
   </div>
 
+  <p class="contact-route" id="contactRoute" data-i18n="contactRoute" style="display:none;">Capturing that repeat value on direct, instead of through the OTA, is the work I do with operators. If you want to talk it through: <a href="mailto:rbisschoff@gmail.com?subject=Repeat%20Guest%20Value" data-contact-tool="repeat-guest-value">rbisschoff@gmail.com</a></p>
+
   <div class="authority-band" id="authorityBand">
     <div class="authority-note" data-i18n="authorityNote">Built for operators who want the number before the strategy. Roger Bisschoff, 15 years in European hospitality distribution and commercial leadership across 1,500+ properties.</div>
     <div class="authority-series" data-i18n="authoritySeries"><strong>Operator Series</strong>, free diagnostic tools for senior property operators.</div>
@@ -572,7 +576,7 @@ footer a { color:var(--alert); text-decoration:none; font-weight:500; }
   </div>
 </div>
 
-<footer data-i18n="footerText">Repeat Guest Value · Repeat booking revenue &amp; OTA commission diagnostic · <a href="https://linkedin.com/in/rogerbisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/rogerbisschoff</a></footer>
+<footer data-i18n="footerText">Repeat Guest Value · Repeat booking revenue &amp; OTA commission diagnostic · <a href="https://linkedin.com/in/roger-bisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/roger-bisschoff</a></footer>
 
 <script>
 let chartInstance = null;
@@ -629,9 +633,10 @@ const I18N = {
     secB2bOpportunity: 'The B2B opportunity',
     authorityNote: 'Built for operators who want the number before the strategy. Roger Bisschoff, 15 years in European hospitality distribution and commercial leadership across 1,500+ properties.',
     authoritySeries: '<strong>Operator Series</strong>, free diagnostic tools for senior property operators.',
+    contactRoute: 'Capturing that repeat value on direct, instead of through the OTA, is the work I do with operators. If you want to talk it through: <a href="mailto:rbisschoff@gmail.com?subject=Repeat%20Guest%20Value" data-contact-tool="repeat-guest-value">rbisschoff@gmail.com</a>',
     attributionText: '<strong>Framework by Roger Bisschoff</strong> · First published 2026 · Part of the Operator Intelligence Suite',
     attributionLink: 'View the full suite →',
-    footerText: 'Repeat Guest Value · Repeat booking revenue &amp; OTA commission diagnostic · <a href="https://linkedin.com/in/rogerbisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/rogerbisschoff</a>',
+    footerText: 'Repeat Guest Value · Repeat booking revenue &amp; OTA commission diagnostic · <a href="https://linkedin.com/in/roger-bisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/roger-bisschoff</a>',
     valBookings: 'Enter your annual booking volume.',
     valAdrLos: 'Enter ADR and average length of stay.',
     valAbv: 'Enter average booking value.',
@@ -725,9 +730,10 @@ const I18N = {
     secB2bOpportunity: 'L\'opportunità B2B',
     authorityNote: 'Creato per operatori che vogliono il numero prima della strategia. Roger Bisschoff, 15 anni nella distribuzione dell\'ospitalità europea e leadership commerciale su oltre 1.500 strutture.',
     authoritySeries: '<strong>Serie Operatori</strong>, strumenti diagnostici gratuiti per operatori immobiliari senior.',
+    contactRoute: 'Recuperare quel valore dei ripetuti in diretto, invece che tramite l’OTA, è il lavoro che faccio con gli operatori. Se vuoi parlarne: <a href="mailto:rbisschoff@gmail.com?subject=Repeat%20Guest%20Value" data-contact-tool="repeat-guest-value">rbisschoff@gmail.com</a>',
     attributionText: '<strong>Framework di Roger Bisschoff</strong> · Pubblicato per la prima volta nel 2026 · Parte della Operator Intelligence Suite',
     attributionLink: 'Vedi la suite completa →',
-    footerText: 'Repeat Guest Value · Diagnostica su fatturato prenotazioni ripetute e commissioni OTA · <a href="https://linkedin.com/in/rogerbisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/rogerbisschoff</a>',
+    footerText: 'Repeat Guest Value · Diagnostica su fatturato prenotazioni ripetute e commissioni OTA · <a href="https://linkedin.com/in/roger-bisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/roger-bisschoff</a>',
     valBookings: 'Inserisci il tuo volume di prenotazioni annuali.',
     valAdrLos: 'Inserisci ADR e durata media del soggiorno.',
     valAbv: 'Inserisci il valore medio della prenotazione.',
@@ -821,9 +827,10 @@ const I18N = {
     secB2bOpportunity: 'Die B2B-Chance',
     authorityNote: 'Entwickelt für Betreiber, die die Zahl vor der Strategie wollen. Roger Bisschoff, 15 Jahre in europäischer Hospitality-Distribution und kommerzieller Führung über 1.500+ Immobilien.',
     authoritySeries: '<strong>Operator-Serie</strong>, kostenlose Diagnosewerkzeuge für erfahrene Immobilienbetreiber.',
+    contactRoute: 'Genau diesen Wiederholungswert direkt statt über die OTA zu sichern ist meine Arbeit mit Betreibern. Wenn Sie darüber sprechen möchten: <a href="mailto:rbisschoff@gmail.com?subject=Repeat%20Guest%20Value" data-contact-tool="repeat-guest-value">rbisschoff@gmail.com</a>',
     attributionText: '<strong>Framework von Roger Bisschoff</strong> · Erstveröffentlichung 2026 · Teil der Operator Intelligence Suite',
     attributionLink: 'Die gesamte Suite ansehen →',
-    footerText: 'Repeat Guest Value · Diagnose zu Umsatz aus Wiederholungsbuchungen und OTA-Provision · <a href="https://linkedin.com/in/rogerbisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/rogerbisschoff</a>',
+    footerText: 'Repeat Guest Value · Diagnose zu Umsatz aus Wiederholungsbuchungen und OTA-Provision · <a href="https://linkedin.com/in/roger-bisschoff" target="_blank" rel="noopener noreferrer">linkedin.com/in/roger-bisschoff</a>',
     valBookings: 'Gib dein jährliches Buchungsvolumen ein.',
     valAdrLos: 'Gib ADR und durchschnittliche Aufenthaltsdauer ein.',
     valAbv: 'Gib den durchschnittlichen Buchungswert ein.',
@@ -900,6 +907,7 @@ function setMode(mode) {
   // Hide previous results when switching modes
   document.getElementById('resultPanel').classList.remove('visible');
   document.getElementById('authorityBand').classList.remove('visible');
+  document.getElementById('contactRoute').style.display = 'none';
   document.getElementById('validation').classList.remove('visible');
 }
 
@@ -1023,6 +1031,7 @@ function runShortStayCalc(skipScroll) {
 
   document.getElementById('resultPanel').classList.add('visible');
   document.getElementById('authorityBand').classList.add('visible');
+  document.getElementById('contactRoute').style.display = 'block';
 
   if (!completionFired.short && typeof gtag === 'function') {
     gtag('event', 'repeat_guest_value_completed', { event_category: 'engagement', mode: 'short' });
@@ -1138,6 +1147,7 @@ function runLongStayCalc(skipScroll) {
 
   document.getElementById('resultPanel').classList.add('visible');
   document.getElementById('authorityBand').classList.add('visible');
+  document.getElementById('contactRoute').style.display = 'block';
 
   if (!completionFired.long && typeof gtag === 'function') {
     gtag('event', 'repeat_guest_value_completed', { event_category: 'engagement', mode: 'long' });
@@ -1287,6 +1297,14 @@ document.querySelectorAll('.lang-btn').forEach(function(btn) {
 onRepeatRateChange();
 
 applyLang(window.__oisInitialLang || 'en');
+
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[data-contact-tool]');
+  if (!a) return;
+  if (typeof gtag === 'function') {
+    gtag('event', 'contact_click', { tool: a.getAttribute('data-contact-tool') });
+  }
+});
 </script>
 </body>
 </html>
