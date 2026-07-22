@@ -1046,11 +1046,11 @@ function runShortStayCalc(skipScroll) {
   document.getElementById('m6Revenue').textContent = delta6pp > 0 ? '+' + money(m6Revenue) + p.perYearSuffix : '- (' + p.m6NotReached + ')';
   document.getElementById('m6Commission').textContent = delta6pp > 0 ? '+' + money(m6Saved) + p.perYearSuffix : '-';
 
-  renderChart(repeatRevenue, commissionPaid, m3Revenue, m3Saved, m6Revenue, m6Saved);
-
   document.getElementById('resultPanel').classList.add('visible');
   document.getElementById('authorityBand').classList.add('visible');
   document.getElementById('contactRoute').style.display = 'block';
+
+  renderChart(repeatRevenue, commissionPaid, m3Revenue, m3Saved, m6Revenue, m6Saved);
 
   if (!completionFired.short && typeof gtag === 'function') {
     gtag('event', 'repeat_guest_value_completed', { event_category: 'engagement', mode: 'short' });
@@ -1161,12 +1161,11 @@ function runLongStayCalc(skipScroll) {
     perOrgCommissionToday: money(perOrgCommissionToday)
   });
 
-  // Chart: OTA spend vs direct opportunity
-  renderLongStayChart(totalCommission, m1CommissionSaved, m3CommissionSaved);
-
   document.getElementById('resultPanel').classList.add('visible');
   document.getElementById('authorityBand').classList.add('visible');
   document.getElementById('contactRoute').style.display = 'block';
+
+  renderLongStayChart(totalCommission, m1CommissionSaved, m3CommissionSaved);
 
   if (!completionFired.long && typeof gtag === 'function') {
     gtag('event', 'repeat_guest_value_completed', { event_category: 'engagement', mode: 'long' });
@@ -1179,11 +1178,13 @@ function runLongStayCalc(skipScroll) {
 }
 
 function renderChart(todayRev, todayComm, m3Rev, m3Saved, m6Rev, m6Saved) {
-  const p = pack();
-  const ctx = document.getElementById('valueChart').getContext('2d');
-  if (chartInstance) chartInstance.destroy();
+  try {
+    if (typeof Chart === 'undefined') return;
+    const p = pack();
+    const ctx = document.getElementById('valueChart').getContext('2d');
+    if (chartInstance) chartInstance.destroy();
 
-  chartInstance = new Chart(ctx, {
+    chartInstance = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: [p.chartTodayLabel, p.chartM3Label, p.chartM6Label],
@@ -1223,14 +1224,19 @@ function renderChart(todayRev, todayComm, m3Rev, m3Saved, m6Rev, m6Saved) {
       }
     }
   });
+  } catch (e) {
+    console.error('Chart rendering failed, results are still shown without the chart:', e);
+  }
 }
 
 function renderLongStayChart(currentCommission, m1Saved, m3Saved) {
-  const p = pack();
-  const ctx = document.getElementById('valueChart').getContext('2d');
-  if (chartInstance) chartInstance.destroy();
+  try {
+    if (typeof Chart === 'undefined') return;
+    const p = pack();
+    const ctx = document.getElementById('valueChart').getContext('2d');
+    if (chartInstance) chartInstance.destroy();
 
-  chartInstance = new Chart(ctx, {
+    chartInstance = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: [p.chartCurrentCommLabel, p.chartConvert1Label, p.chartConvert3Label],
@@ -1270,6 +1276,9 @@ function renderLongStayChart(currentCommission, m1Saved, m3Saved) {
       }
     }
   });
+  } catch (e) {
+    console.error('Chart rendering failed, results are still shown without the chart:', e);
+  }
 }
 
 function applyLang(lang) {
