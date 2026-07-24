@@ -104,16 +104,35 @@ body { font-family:Inter,-apple-system,sans-serif; background:var(--bg); color:v
 
 header {
   background:rgba(8,8,14,0.96);
-  padding-top:calc(12px + env(safe-area-inset-top));
-  padding-bottom:12px;
-  padding-left:max(20px, calc((100% - 680px) / 2));
-  padding-right:max(20px, calc((100% - 680px) / 2));
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  border-bottom:0.5px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   position:sticky; top:0; z-index:100;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
-.logo { display:flex; align-items:center; gap:10px; min-width:0; }
-.logo > div:not(.logo-mark) { min-width:0; }
+.header-inner {
+  max-width:680px; margin:0 auto; padding:16px 24px;
+  padding-top:calc(16px + env(safe-area-inset-top));
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.brand { display:flex; align-items:center; gap:12px; min-width:0; }
+.brand-mark {
+  width:36px; height:36px; background:linear-gradient(145deg,var(--accent),var(--accent-dark));
+  border-radius:10px; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 2px 10px rgba(0,122,255,0.35);
+  font-size:14px; font-weight:800; color:#fff; flex-shrink:0;
+}
+.brand-text { color:#fff; min-width:0; }
+.brand-title { font-size:15px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.brand-subtitle { color:rgba(255,255,255,0.35); font-size:9px; text-transform:uppercase; letter-spacing:1px; margin-top:1px; }
+.header-actions { display:flex; gap:8px; flex-shrink:0; align-items:center; }
+.btn-ghost {
+  background:rgba(255,255,255,0.08); color:#fff;
+  border:1px solid rgba(255,255,255,0.15); padding:8px 14px;
+  border-radius:8px; font-size:13px; font-weight:500;
+  cursor:pointer; transition:all 0.2s; font-family:inherit;
+}
+.btn-ghost:hover { background:rgba(255,255,255,0.15); }
+.btn-ghost:focus-visible { outline:2px solid rgba(255,255,255,0.6); outline-offset:2px; }
 
 .lang-switch { display:flex; align-items:center; gap:4px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:100px; padding:3px; flex-shrink:0; }
 .lang-btn { font-family:inherit; font-size:11px; font-weight:600; letter-spacing:0.04em; color:rgba(255,255,255,0.55); background:transparent; border:none; border-radius:100px; padding:6px 10px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.15s; }
@@ -121,14 +140,6 @@ header {
 .lang-btn.active { background:rgba(255,255,255,0.16); color:#fff; }
 .lang-btn:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .lang-flag { font-size:13px; line-height:1; }
-.logo-mark {
-  width:36px; height:36px; background:linear-gradient(145deg,var(--accent),var(--accent-dark));
-  border-radius:10px; display:flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 10px rgba(0,122,255,0.35);
-  font-size:14px; font-weight:800; color:#fff; flex-shrink:0;
-}
-.logo-name { color:#fff; font-size:15px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.logo-sub { color:rgba(255,255,255,0.35); font-size:9px; text-transform:uppercase; letter-spacing:1px; margin-top:1px; }
 
 .hero {
   background:linear-gradient(170deg,#0F1B2E 0%,#14243D 55%,#0F1B2E 100%);
@@ -197,16 +208,15 @@ header {
 .ios-row input:focus, .ios-row select:focus { outline:2px solid rgba(27,79,114,0.35); outline-offset:-2px; border-radius:4px; }
 
 @media (max-width: 900px) {
-  .logo-sub { display: none; }
+  .brand-subtitle { display: none; }
 }
 
 @media (max-width: 640px) {
-  .logo-name { font-size: 13px; }
-  header {
+  .brand-title { font-size: 13px; }
+  .header-inner {
+    padding: 10px 12px;
     padding-top: calc(10px + env(safe-area-inset-top));
-    padding-bottom: 10px;
-    padding-left: max(12px, calc((100% - 680px) / 2));
-    padding-right: max(12px, calc((100% - 680px) / 2));
+    gap: 8px;
   }
   .lang-btn {
     padding: 8px 9px;
@@ -328,17 +338,22 @@ footer a { color:var(--alert); text-decoration:none; font-weight:500; }
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-mark">↻</div>
-    <div>
-      <div class="logo-name" data-i18n="logoName">Repeat Guest Value</div>
-      <div class="logo-sub" data-i18n="logoSub">Operator Series</div>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">↻</div>
+      <div class="brand-text">
+        <div class="brand-title" data-i18n="logoName">Repeat Guest Value</div>
+        <div class="brand-subtitle" data-i18n="logoSub">Operator Series</div>
+      </div>
     </div>
-  </div>
-  <div class="lang-switch" role="group" aria-label="Language">
-    <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true"><span class="lang-flag" aria-hidden="true">🇬🇧</span> EN</button>
-    <button type="button" class="lang-btn" data-lang="it" aria-pressed="false"><span class="lang-flag" aria-hidden="true">🇮🇹</span> IT</button>
-    <button type="button" class="lang-btn" data-lang="de" aria-pressed="false"><span class="lang-flag" aria-hidden="true">🇩🇪</span> DE</button>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true"><span class="lang-flag" aria-hidden="true">🇬🇧</span> EN</button>
+        <button type="button" class="lang-btn" data-lang="it" aria-pressed="false"><span class="lang-flag" aria-hidden="true">🇮🇹</span> IT</button>
+        <button type="button" class="lang-btn" data-lang="de" aria-pressed="false"><span class="lang-flag" aria-hidden="true">🇩🇪</span> DE</button>
+      </div>
+      <button class="btn-ghost" onclick="resetForm()" type="button" data-i18n="resetBtn">Reset</button>
+    </div>
   </div>
 </header>
 
@@ -608,6 +623,7 @@ const I18N = {
   en: {
     logoName: 'Repeat Guest Value',
     logoSub: 'Operator Series',
+    resetBtn: 'Reset',
     heroTitle: 'What are <em>repeat bookings</em> costing you on OTAs?',
     heroSubtitle: 'Most operators never calculate the revenue and commission tied to repeat bookings, whether from individual returning guests or from organisations booking long stays through OTAs.',
     modeShortTitle: 'Short-stay tourists',
@@ -705,6 +721,7 @@ const I18N = {
   it: {
     logoName: 'Repeat Guest Value',
     logoSub: 'Serie Operatori',
+    resetBtn: 'Reimposta',
     heroTitle: 'Quanto ti costano le <em>prenotazioni ripetute</em> sulle OTA?',
     heroSubtitle: 'La maggior parte degli operatori non calcola mai il fatturato e la commissione legati alle prenotazioni ripetute, che si tratti di singoli ospiti di ritorno o di organizzazioni che prenotano soggiorni lunghi tramite le OTA.',
     modeShortTitle: 'Turisti a breve soggiorno',
@@ -802,6 +819,7 @@ const I18N = {
   de: {
     logoName: 'Repeat Guest Value',
     logoSub: 'Operator-Serie',
+    resetBtn: 'Zurücksetzen',
     heroTitle: 'Was kosten dich <em>Wiederholungsbuchungen</em> auf OTAs?',
     heroSubtitle: 'Die meisten Betreiber berechnen nie den Umsatz und die Provision im Zusammenhang mit Wiederholungsbuchungen, egal ob von einzelnen wiederkehrenden Gästen oder von Organisationen, die über OTAs Langzeitaufenthalte buchen.',
     modeShortTitle: 'Kurzzeit-Touristen',
@@ -936,6 +954,23 @@ function setAbvMode(mode) {
   document.getElementById('modeAdr').classList.toggle('active', mode === 'adr');
   document.getElementById('rowAbv').style.display = mode === 'direct' ? 'flex' : 'none';
   document.getElementById('rowAdr').style.display = mode === 'adr' ? 'block' : 'none';
+}
+
+function resetForm() {
+  ['bookings', 'abv', 'adr', 'los', 'repeatCustom', 'lsBookings', 'lsLos', 'lsAdr', 'lsOrgs', 'lsBookingsPerOrg'].forEach(function (id) {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('commission').value = '17';
+  document.getElementById('lsCommission').value = '17';
+  document.getElementById('repeatRate').value = 'unknown';
+  onRepeatRateChange();
+  setMode('short');
+  setAbvMode('direct');
+  completionFired = { short: false, long: false };
+  document.getElementById('resultPanel').classList.remove('visible');
+  document.getElementById('authorityBand').classList.remove('visible');
+  document.getElementById('contactRoute').style.display = 'none';
+  document.getElementById('validation').classList.remove('visible');
 }
 
 function onRepeatRateChange() {
