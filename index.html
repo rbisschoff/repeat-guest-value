@@ -209,6 +209,14 @@ header {
 .toggle-btn:focus-visible, .btn-run:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .ios-row input:focus, .ios-row select:focus { outline:2px solid rgba(27,79,114,0.35); outline-offset:-2px; border-radius:4px; }
 
+/* DESKTOP SCALE-UP */
+@media (min-width: 1000px) {
+  .header-inner { max-width:960px; }
+  .container { max-width:960px; padding:32px 24px 64px; }
+  .chart-wrap { height:320px; }
+  .attribution-content { max-width:1600px; }
+}
+
 @media (max-width: 900px) {
   .brand-subtitle { display: none; }
 }
