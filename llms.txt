@@ -1,0 +1,3 @@
+# Repeat Guest Value
+
+Repeat Guest Value is a free diagnostic tool that shows how much revenue and OTA commission is hidden in an operator's repeat bookings — both individual returning guests and organisations booking long stays through OTAs. It is for short-term rental and serviced apartment operators who suspect they're paying OTA commission on guests who would happily book direct. Most operators never calculate this cost; the tool quantifies it from the operator's own numbers. It runs entirely in the browser: no login, no account, and no data leaves the visitor's device. It is part of the Operator Intelligence Suite by Roger Bisschoff.

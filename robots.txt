@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rbisschoff.github.io/repeat-guest-value/sitemap.xml
